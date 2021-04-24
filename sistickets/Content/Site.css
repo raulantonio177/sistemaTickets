@@ -20,5 +20,9 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 750px;
+}
+
+.btn{
+    margin-top: 1rem;
 }
