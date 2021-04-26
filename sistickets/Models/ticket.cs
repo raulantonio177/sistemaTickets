@@ -24,5 +24,6 @@ namespace sistickets.Models
         public string asunto { get; set; }
         public string mensaje { get; set; }
         public string solucion { get; set; }
+        public string prioridad { get; set; }
     }
 }
