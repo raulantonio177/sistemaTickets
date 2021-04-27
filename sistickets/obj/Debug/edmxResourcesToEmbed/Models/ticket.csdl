@@ -30,10 +30,11 @@
     <Property Name="estado_ticket" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
     <Property Name="nombre_usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="email_cliente" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-    <Property Name="departamento" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="asunto" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
     <Property Name="mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="solucion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="prioridad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="ticketEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="administrador" EntityType="Self.administrador" />

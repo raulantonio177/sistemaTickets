@@ -94,6 +94,10 @@ namespace sistickets.Controllers
 
             return View(listaTickets);
         }
+        public ActionResult Soporte()
+        {
+            return View();
+        }
         public ActionResult Guardar()
         {
             return View();

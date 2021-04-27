@@ -215,6 +215,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\new_ticket.png" />
+    <Content Include="img\old_ticket.png" />
+    <Content Include="img\ticket.png" />
+    <Content Include="img\tux_repair.png" />
     <Content Include="Models\ticket.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ticket.edmx</DependentUpon>
@@ -260,10 +264,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Cliente\Guardar.cshtml" />
+    <Content Include="Views\Ticket\Guardar.cshtml" />
+    <Content Include="Views\Ticket\Soporte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Ticket\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

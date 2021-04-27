@@ -30,10 +30,11 @@
     <Property Name="estado_ticket" Type="varchar" MaxLength="60" />
     <Property Name="nombre_usuario" Type="varchar" MaxLength="20" />
     <Property Name="email_cliente" Type="varchar" MaxLength="60" />
-    <Property Name="departamento" Type="varchar" MaxLength="70" />
     <Property Name="asunto" Type="varchar" MaxLength="70" />
     <Property Name="mensaje" Type="text" />
     <Property Name="solucion" Type="text" />
+    <Property Name="prioridad" Type="varchar" MaxLength="10" />
+    <Property Name="departamento" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="ticketModelStoreContainer">
     <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
