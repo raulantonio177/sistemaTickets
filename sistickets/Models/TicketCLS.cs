@@ -11,7 +11,6 @@ namespace sistickets.Models
         [Display(Name ="Id")]
         public int id { get; set; }
 
-        [Required]
         [Display(Name = "Fecha de creación")]
         public DateTime fecha { get; set; }
 
@@ -22,10 +21,12 @@ namespace sistickets.Models
         public string estado_ticket { get; set; }
 
         [Required]
-        [Display(Name = "Usuario")]
+        [RegularExpression("[a-zA-Z ]{1,100}", ErrorMessage = "Debe contener letras y un máximo de 100 caracteres")]
+        [Display(Name = "Nombre")]
         public string nombre_usuario { get; set; }
 
         [Required]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "El correo no es válido")]
         [Display(Name = "Correo del cliente")]
         public string email_cliente { get; set; }
 
@@ -46,5 +47,19 @@ namespace sistickets.Models
 
         [Display(Name = "Prioridad")]
         public string prioridad { get; set; }
+
+        public int idEmpresa { get; set; }
+    }
+
+    public enum Departamento{
+        Contabilidad,
+        [Display(Name ="Recursos Humanos")]
+        RecursosHumanos,
+        Marketing,
+        Sistemas,
+        Compras,
+        Mantenimiento,
+        [Display(Name = "Empresa Externa")]
+        Empresa
     }
 }

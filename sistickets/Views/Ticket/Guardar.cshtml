@@ -1,8 +1,11 @@
-﻿
+﻿@using sistickets.Models
+@model TicketCLS
 @{
     ViewBag.Title = "Guardar";
+    List<SelectListItem> listaEmpresas = (List<SelectListItem>)ViewBag.listaEmpresas;
 }
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -44,80 +47,86 @@
                             <p class="text-primary text-justify">Por favor llene todos los datos de este formulario para abrir su ticket. El <strong>Ticket ID</strong> será enviado a la dirección de correo electronico proporcionada en este formulario.</p>
                         </div>
                         <div class="col-sm-8">
-                            <form class="form-horizontal" role="form" action="" method="POST">
+                            @using (Html.BeginForm("Guardar", "Ticket", FormMethod.Post, new { @id = "frmGuardar", @class = "form-horizontal" }))
+                            {
                                 <fieldset>
+                                   
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Fecha</label>
+                                        @Html.LabelFor(p => p.nombre_usuario, new { @class = "col-sm-2 control-label" })
                                         <div class='col-sm-10'>
                                             <div class="input-group">
-                                                <input class="form-control" type="text" id="fechainput" placeholder="Fecha" name="fecha_ticket" required="" readonly>
-                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Nombre</label>
-                                        <div class="col-sm-10">
-                                            <div class='input-group'>
-                                                <input type="text" class="form-control" placeholder="Nombre" required="" pattern="[a-zA-Z ]{1,30}" name="name_ticket" title="Nombre Apellido">
+                                                @Html.TextBoxFor(p => p.nombre_usuario, new { @class = "form-control", @placeholder = "Nombre y Apellidos" })
                                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                             </div>
+                                            @Html.ValidationMessage("nombre_usuario", new { @class = "text-danger" })
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                                        <div class="col-sm-10">
-                                            <div class='input-group'>
-                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email_ticket" required="" title="Ejemplo@dominio.com">
+                                        @Html.LabelFor(p => p.email_cliente, new { @class = "col-sm-2 control-label" })
+                                        <div class='col-sm-10'>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(p => p.email_cliente, new { @class = "form-control", @placeholder = "Correo" })
                                                 <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
                                             </div>
+                                            @Html.ValidationMessage("email_cliente", new { @class = "text-danger" })
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Departamento</label>
-                                        <div class="col-sm-10">
-                                            <div class='input-group'>
-                                                <select class="form-control" name="departamento_ticket">
-                                                    <option value="Contabilidad">Contabilidad</option>
-                                                    <option value="Recursos Humanos">Recursos Humanos</option>
-                                                    <option value="Sistemas">Sistemas</option>
-                                                    <option value="Marketing">Marketing</option>
-                                                    <option value="Compras">Compras</option>
-                                                    <option value="Mantenimiento">Mantenimiento</option>
-                                                    <option value="Empresa">Empresa</option>
-                                                </select>
+                                        @Html.LabelFor(p => p.departamento, new { @class = "col-sm-2 control-label" })
+                                        <div class='col-sm-10'>
+                                            <div class="input-group">
+                                                @Html.DropDownListFor(p => p.departamento, new SelectList(Enum.GetValues(typeof(Departamento))),
+                                                 "-----SELECCIONAR-----", new { @class = "form-control", @id = "combo_departamento" })
                                                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
                                             </div>
+                                            @Html.ValidationMessage("departamento", new { @class = "text-danger" })
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Asunto</label>
+                                        @Html.LabelFor(p => p.idEmpresa, new { @class = "col-sm-2 control-label" })
                                         <div class="col-sm-10">
                                             <div class='input-group'>
-                                                <input type="text" class="form-control" placeholder="Asunto" name="asunto_ticket" required="">
-                                                <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
+                                                @Html.DropDownList("idEmpresa", listaEmpresas, null, new
+                                                {
+                                                    @class = "form-control",
+                                               @id = "combo_empresa",
+                                                    @name = "empresa_ticket",
+                                                    @disabled = true,
+                                                    @required = false
+                                                })
+                                                <span class="input-group-addon"><i class="fa fa-building"></i></span>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Problema de su producto</label>
-                                        <div class="col-sm-10">
-                                            <textarea class="form-control" rows="3" placeholder="Escriba el problema que presenta" name="mensaje_ticket" required=""></textarea>
+                                        @Html.LabelFor(p => p.asunto, new { @class = "col-sm-2 control-label" })
+                                        <div class='col-sm-10'>
+                                            <div class="input-group">
+                                                @Html.TextBoxFor(p => p.asunto, new { @class = "form-control", @placeholder = "Asunto" })
+                                                <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
+                                            </div>
+                                            @Html.ValidationMessage("asunto", new { @class = "text-danger" })
                                         </div>
                                     </div>
-
+                                    <div class="form-group">
+                                        @Html.LabelFor(p => p.mensaje, new { @class = "col-sm-2 control-label" })
+                                        <div class='col-sm-10'>
+                                            <div class="input-group">
+                                                @Html.TextAreaFor(p => p.mensaje, new { @class = "form-control", @placeholder = "Escriba el problema con su servicio" })
+                                                @Html.ValidationMessage("mensaje", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-info">Abrir ticket</button>
-                                        </div>
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Abrir ticket</button>
+                                            <button type="button" class="btn btn-danger" onclick="limpiar()">
+                                                Limpiar <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </div>                                 
                                     </div>
                                 </fieldset>
-                            </form>
+                            }
                         </div>
                     </div>
                 </div>
@@ -125,3 +134,43 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Desea guardar los cambios?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div style="padding:1em">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="guardar()" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).on('change', '#combo_departamento', function (event) {
+        if ($("#combo_departamento option:selected").text() == "Empresa") {
+            $('#combo_empresa').removeAttr('disabled');
+        }
+    });
+
+    function limpiar() {
+        var controles = document.getElementsByClassName("form-control");
+        var control;
+        for (var i = 0; i < controles.length; i++) {
+            control = controles[i];
+            control.value = "";
+        }
+    }
+    function guardar() {
+        var frmGuardar = document.getElementById("frmGuardar");
+        frmGuardar.submit();
+    }
+
+</script>

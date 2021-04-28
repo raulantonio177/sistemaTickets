@@ -8,6 +8,8 @@
         <EntityTypeShape EntityType="ticketModel.administrador" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ticketModel.cliente" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ticketModel.ticket" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ticketModel.empresa" Width="1.5" PointX="0.75" PointY="8.75" />
+        <AssociationConnector Association="ticketModel.FK__ticket__id_empre__49C3F6B7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

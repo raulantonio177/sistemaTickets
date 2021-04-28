@@ -28,5 +28,6 @@ namespace sistickets.Models
         public virtual DbSet<administrador> administrador { get; set; }
         public virtual DbSet<cliente> cliente { get; set; }
         public virtual DbSet<ticket> ticket { get; set; }
+        public virtual DbSet<empresa> empresa { get; set; }
     }
 }

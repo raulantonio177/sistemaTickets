@@ -25,5 +25,8 @@ namespace sistickets.Models
         public string mensaje { get; set; }
         public string solucion { get; set; }
         public string prioridad { get; set; }
+        public Nullable<int> id_empresa { get; set; }
+    
+        public virtual empresa empresa { get; set; }
     }
 }

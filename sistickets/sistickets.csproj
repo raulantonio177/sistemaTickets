@@ -185,6 +185,9 @@
       <DependentUpon>ticket.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClienteCLS.cs" />
+    <Compile Include="Models\empresa.cs">
+      <DependentUpon>ticket.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ticket.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

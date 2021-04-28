@@ -20,6 +20,13 @@
     <Property Name="email_cliente" Type="varchar" MaxLength="100" />
     <Property Name="clave" Type="text" />
   </EntityType>
+  <EntityType Name="empresa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="ticket">
     <Key>
       <PropertyRef Name="id" />
@@ -35,10 +42,28 @@
     <Property Name="solucion" Type="text" />
     <Property Name="prioridad" Type="varchar" MaxLength="10" />
     <Property Name="departamento" Type="varchar" MaxLength="50" />
+    <Property Name="id_empresa" Type="int" />
   </EntityType>
+  <Association Name="FK__ticket__id_empre__49C3F6B7">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="ticketModelStoreContainer">
     <EntitySet Name="administrador" EntityType="Self.administrador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ticket" EntityType="Self.ticket" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ticket__id_empre__49C3F6B7" Association="Self.FK__ticket__id_empre__49C3F6B7">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="ticket" EntitySet="ticket" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

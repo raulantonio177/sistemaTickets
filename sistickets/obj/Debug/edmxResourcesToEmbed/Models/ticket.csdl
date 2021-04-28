@@ -35,10 +35,37 @@
     <Property Name="mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="solucion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="prioridad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="id_empresa" Type="Int32" />
+    <NavigationProperty Name="empresa" Relationship="ticketModel.FK__ticket__id_empre__49C3F6B7" FromRole="ticket" ToRole="empresa" />
   </EntityType>
   <EntityContainer Name="ticketEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="administrador" EntityType="Self.administrador" />
     <EntitySet Name="cliente" EntityType="Self.cliente" />
     <EntitySet Name="ticket" EntityType="Self.ticket" />
+    <EntitySet Name="empresa" EntityType="ticketModel.empresa" />
+    <AssociationSet Name="FK__ticket__id_empre__49C3F6B7" Association="ticketModel.FK__ticket__id_empre__49C3F6B7">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="ticket" EntitySet="ticket" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="empresa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ticket" Relationship="ticketModel.FK__ticket__id_empre__49C3F6B7" FromRole="empresa" ToRole="ticket" />
+  </EntityType>
+  <Association Name="FK__ticket__id_empre__49C3F6B7">
+    <End Type="ticketModel.empresa" Role="empresa" Multiplicity="0..1" />
+    <End Type="ticketModel.ticket" Role="ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="id_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -98,8 +98,23 @@ namespace sistickets.Controllers
         {
             return View();
         }
+        List<SelectListItem> lista;
+        public void listarEmpresas()
+        {
+            lista = (from empresa in bd.empresa
+                                          select new SelectListItem
+                                          {
+                                              Text = empresa.nombre,
+                                              Value = empresa.id.ToString()
+                                          }).ToList();
+            lista.Insert(0, new SelectListItem { Text = "-----SELECCIONA-----", Value = "" });
+            ViewBag.listaEmpresas = lista;
+        }
+        [HttpGet]
         public ActionResult Guardar()
         {
+            listarEmpresas();
+            ViewBag.listaEmpresas = lista;
             return View();
         }
 
@@ -108,10 +123,14 @@ namespace sistickets.Controllers
         {
             if (!ModelState.IsValid)
             {
+                listarEmpresas();
+                ViewBag.listaEmpresas = lista;
                 return View(oTicketCLS);
             }
             else
             {
+                listarEmpresas();
+                ViewBag.listaEmpresas = lista;
                 //Generar numero de serie aleatorio del ticket
                 Random rand = new Random();
                 string codigo = "";
@@ -132,6 +151,14 @@ namespace sistickets.Controllers
                 oTicket.nombre_usuario = oTicketCLS.nombre_usuario;
                 oTicket.email_cliente = oTicketCLS.email_cliente;
                 oTicket.departamento = oTicketCLS.departamento;
+                if (oTicketCLS.idEmpresa != 0)
+                {
+                    oTicket.id_empresa = oTicketCLS.idEmpresa;
+                }
+                else
+                {
+                    oTicket.id_empresa = null;
+                }
                 oTicket.asunto = oTicketCLS.asunto;
                 oTicket.mensaje = oTicketCLS.mensaje;
                 oTicket.estado_ticket = "Pendiente";
