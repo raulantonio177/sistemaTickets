@@ -183,7 +183,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\UsuarioCLS.cs" />
     <Compile Include="Models\empresa.cs">
       <DependentUpon>ticket.tt</DependentUpon>
     </Compile>
@@ -220,10 +219,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ticket.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TicketCLS.cs" />
     <Compile Include="Models\usuario.cs">
       <DependentUpon>ticket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UsuarioCLS.cs" />
+    <Compile Include="Models\TicketCLS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

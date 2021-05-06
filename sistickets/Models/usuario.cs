@@ -19,7 +19,7 @@ namespace sistickets.Models
         public string nombre_usuario { get; set; }
         public string email_cliente { get; set; }
         public string clave { get; set; }
-        public Nullable<int> id_Rol { get; set; }
+        public Nullable<int> id_rol { get; set; }
     
         public virtual rol rol { get; set; }
     }

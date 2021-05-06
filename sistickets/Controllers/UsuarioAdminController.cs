@@ -12,14 +12,14 @@ namespace sistickets.Controllers
 {
     public class UsuarioAdminController : Controller
     {
-        ticketEntities bd;
+        sisticketsEntities bd;
 
         public UsuarioAdminController()
         {
-            bd = new ticketEntities();
+            bd = new sisticketsEntities();
         }
 
-        [AuthorizeUser(idOperacion: 7)]
+        [AuthorizeUser(idOperacion: 6)]
         public ActionResult Guardar()
         {
             return View();
@@ -48,7 +48,7 @@ namespace sistickets.Controllers
                     string cadenaContraCifrada = BitConverter.ToString(byteContraCifrado).Replace("-", "");
                     oUsuario.clave = cadenaContraCifrada;
                     oUsuario.email_cliente = oUsuarioCLS.correo;
-                    oUsuario.id_Rol = 2;
+                    oUsuario.id_rol = 2;
                     bd.usuario.Add(oUsuario);
                     bd.SaveChanges();
                     ViewBag.Alert = "Usuario agregado con exito";

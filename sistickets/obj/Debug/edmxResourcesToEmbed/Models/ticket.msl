@@ -1,83 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ticketModelStoreContainer" CdmEntityContainer="ticketEntities">
+  <EntityContainerMapping StorageEntityContainer="sisticketsModelStoreContainer" CdmEntityContainer="sisticketsEntities">
     <EntitySetMapping Name="empresa">
-      <EntityTypeMapping TypeName="ticketModel.empresa">
+      <EntityTypeMapping TypeName="sisticketsModel.empresa">
         <MappingFragment StoreEntitySet="empresa">
+          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ticket">
-      <EntityTypeMapping TypeName="ticketModel.ticket">
-        <MappingFragment StoreEntitySet="ticket">
-          <ScalarProperty Name="id_estado_ticket" ColumnName="id_estado_ticket" />
-          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
-          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
-          <ScalarProperty Name="departamento" ColumnName="departamento" />
-          <ScalarProperty Name="prioridad" ColumnName="prioridad" />
-          <ScalarProperty Name="solucion" ColumnName="solucion" />
-          <ScalarProperty Name="mensaje" ColumnName="mensaje" />
-          <ScalarProperty Name="asunto" ColumnName="asunto" />
-          <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
-          <ScalarProperty Name="serie" ColumnName="serie" />
-          <ScalarProperty Name="fecha" ColumnName="fecha" />
-          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="estado_ticket">
-      <EntityTypeMapping TypeName="ticketModel.estado_ticket">
+      <EntityTypeMapping TypeName="sisticketsModel.estado_ticket">
         <MappingFragment StoreEntitySet="estado_ticket">
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="id_estado_ticket" ColumnName="id_estado_ticket" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="modulo">
-      <EntityTypeMapping TypeName="ticketModel.modulo">
+      <EntityTypeMapping TypeName="sisticketsModel.modulo">
         <MappingFragment StoreEntitySet="modulo">
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="operacion">
-      <EntityTypeMapping TypeName="ticketModel.operacion">
+      <EntityTypeMapping TypeName="sisticketsModel.operacion">
         <MappingFragment StoreEntitySet="operacion">
-          <ScalarProperty Name="id_Modulo" ColumnName="id_Modulo" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id_Modulo" ColumnName="id_Modulo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="rol">
-      <EntityTypeMapping TypeName="ticketModel.rol">
+      <EntityTypeMapping TypeName="sisticketsModel.rol">
         <MappingFragment StoreEntitySet="rol">
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="rol_operacion">
-      <EntityTypeMapping TypeName="ticketModel.rol_operacion">
+      <EntityTypeMapping TypeName="sisticketsModel.rol_operacion">
         <MappingFragment StoreEntitySet="rol_operacion">
-          <ScalarProperty Name="id_Operacion" ColumnName="id_Operacion" />
-          <ScalarProperty Name="id_Rol" ColumnName="id_Rol" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_Rol" ColumnName="id_Rol" />
+          <ScalarProperty Name="id_Operacion" ColumnName="id_Operacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ticket">
+      <EntityTypeMapping TypeName="sisticketsModel.ticket">
+        <MappingFragment StoreEntitySet="ticket">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="serie" ColumnName="serie" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+          <ScalarProperty Name="asunto" ColumnName="asunto" />
+          <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+          <ScalarProperty Name="solucion" ColumnName="solucion" />
+          <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+          <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+          <ScalarProperty Name="id_estado_ticket" ColumnName="id_estado_ticket" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="usuario">
-      <EntityTypeMapping TypeName="ticketModel.usuario">
+      <EntityTypeMapping TypeName="sisticketsModel.usuario">
         <MappingFragment StoreEntitySet="usuario">
-          <ScalarProperty Name="id_Rol" ColumnName="id_Rol" />
-          <ScalarProperty Name="clave" ColumnName="clave" />
-          <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
-          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
-          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+          <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

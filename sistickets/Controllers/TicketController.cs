@@ -11,11 +11,11 @@ namespace sistickets.Controllers
 {
     public class TicketController : Controller
     {
-        ticketEntities bd;
+        sisticketsEntities bd;
 
         public TicketController()
         {
-            bd = new ticketEntities();
+            bd = new sisticketsEntities();
         }
 
         List<SelectListItem> listaEstados;

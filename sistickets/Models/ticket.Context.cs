@@ -13,10 +13,10 @@ namespace sistickets.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ticketEntities : DbContext
+    public partial class sisticketsEntities : DbContext
     {
-        public ticketEntities()
-            : base("name=ticketEntities")
+        public sisticketsEntities()
+            : base("name=sisticketsEntities")
         {
         }
     
@@ -26,12 +26,12 @@ namespace sistickets.Models
         }
     
         public virtual DbSet<empresa> empresa { get; set; }
-        public virtual DbSet<ticket> ticket { get; set; }
         public virtual DbSet<estado_ticket> estado_ticket { get; set; }
         public virtual DbSet<modulo> modulo { get; set; }
         public virtual DbSet<operacion> operacion { get; set; }
         public virtual DbSet<rol> rol { get; set; }
         public virtual DbSet<rol_operacion> rol_operacion { get; set; }
+        public virtual DbSet<ticket> ticket { get; set; }
         public virtual DbSet<usuario> usuario { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ticketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="sisticketsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="empresa">
           <Key>
             <PropertyRef Name="id" />
@@ -56,14 +56,14 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fecha" Type="datetime" />
           <Property Name="serie" Type="varchar" MaxLength="100" />
+          <Property Name="nombre_usuario" Type="varchar" MaxLength="100" />
           <Property Name="email_cliente" Type="varchar" MaxLength="60" />
+          <Property Name="departamento" Type="varchar" MaxLength="50" />
           <Property Name="asunto" Type="varchar" MaxLength="70" />
           <Property Name="mensaje" Type="text" />
           <Property Name="solucion" Type="text" />
           <Property Name="prioridad" Type="varchar" MaxLength="10" />
-          <Property Name="departamento" Type="varchar" MaxLength="50" />
           <Property Name="id_empresa" Type="int" />
-          <Property Name="nombre_usuario" Type="varchar" MaxLength="100" />
           <Property Name="id_estado_ticket" Type="int" />
         </EntityType>
         <EntityType Name="usuario">
@@ -74,10 +74,10 @@
           <Property Name="nombre_completo" Type="varchar" MaxLength="100" />
           <Property Name="nombre_usuario" Type="varchar" MaxLength="100" />
           <Property Name="email_cliente" Type="varchar" MaxLength="100" />
-          <Property Name="clave" Type="text" />
-          <Property Name="id_Rol" Type="int" />
+          <Property Name="clave" Type="varchar" MaxLength="100" />
+          <Property Name="id_rol" Type="int" />
         </EntityType>
-        <Association Name="FK__operacion__id_Mo__5535A963">
+        <Association Name="FK__operacion__id_Mo__3C69FB99">
           <End Role="modulo" Type="Self.modulo" Multiplicity="0..1" />
           <End Role="operacion" Type="Self.operacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -89,7 +89,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__rol_opera__id_Op__59063A47">
+        <Association Name="FK__rol_opera__id_Op__403A8C7D">
           <End Role="operacion" Type="Self.operacion" Multiplicity="0..1" />
           <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -101,7 +101,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__rol_opera__id_Ro__5812160E">
+        <Association Name="FK__rol_opera__id_Ro__3F466844">
           <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
           <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -113,7 +113,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ticket__id_empre__49C3F6B7">
+        <Association Name="FK__ticket__id_empre__4AB81AF0">
           <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
           <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
           <ReferentialConstraint>
@@ -125,7 +125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ticket__id_estad__4CA06362">
+        <Association Name="FK__ticket__id_estad__4BAC3F29">
           <End Role="estado_ticket" Type="Self.estado_ticket" Multiplicity="0..1" />
           <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
           <ReferentialConstraint>
@@ -137,7 +137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__usuario__id_Rol__5BE2A6F2">
+        <Association Name="FK__usuario__id_rol__4E88ABD4">
           <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
           <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -145,11 +145,11 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="usuario">
-              <PropertyRef Name="id_Rol" />
+              <PropertyRef Name="id_rol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ticketModelStoreContainer">
+        <EntityContainer Name="sisticketsModelStoreContainer">
           <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="estado_ticket" EntityType="Self.estado_ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="modulo" EntityType="Self.modulo" Schema="dbo" store:Type="Tables" />
@@ -158,135 +158,59 @@
           <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ticket" EntityType="Self.ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__operacion__id_Mo__5535A963" Association="Self.FK__operacion__id_Mo__5535A963">
+          <AssociationSet Name="FK__operacion__id_Mo__3C69FB99" Association="Self.FK__operacion__id_Mo__3C69FB99">
             <End Role="modulo" EntitySet="modulo" />
             <End Role="operacion" EntitySet="operacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__rol_opera__id_Op__59063A47" Association="Self.FK__rol_opera__id_Op__59063A47">
+          <AssociationSet Name="FK__rol_opera__id_Op__403A8C7D" Association="Self.FK__rol_opera__id_Op__403A8C7D">
             <End Role="operacion" EntitySet="operacion" />
             <End Role="rol_operacion" EntitySet="rol_operacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__rol_opera__id_Ro__5812160E" Association="Self.FK__rol_opera__id_Ro__5812160E">
+          <AssociationSet Name="FK__rol_opera__id_Ro__3F466844" Association="Self.FK__rol_opera__id_Ro__3F466844">
             <End Role="rol" EntitySet="rol" />
             <End Role="rol_operacion" EntitySet="rol_operacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__ticket__id_empre__49C3F6B7" Association="Self.FK__ticket__id_empre__49C3F6B7">
+          <AssociationSet Name="FK__ticket__id_empre__4AB81AF0" Association="Self.FK__ticket__id_empre__4AB81AF0">
             <End Role="empresa" EntitySet="empresa" />
             <End Role="ticket" EntitySet="ticket" />
           </AssociationSet>
-          <AssociationSet Name="FK__ticket__id_estad__4CA06362" Association="Self.FK__ticket__id_estad__4CA06362">
+          <AssociationSet Name="FK__ticket__id_estad__4BAC3F29" Association="Self.FK__ticket__id_estad__4BAC3F29">
             <End Role="estado_ticket" EntitySet="estado_ticket" />
             <End Role="ticket" EntitySet="ticket" />
           </AssociationSet>
-          <AssociationSet Name="FK__usuario__id_Rol__5BE2A6F2" Association="Self.FK__usuario__id_Rol__5BE2A6F2">
+          <AssociationSet Name="FK__usuario__id_rol__4E88ABD4" Association="Self.FK__usuario__id_rol__4E88ABD4">
             <End Role="rol" EntitySet="rol" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ticketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ticketEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="empresa" EntityType="ticketModel.empresa" />
-          <EntitySet Name="ticket" EntityType="ticketModel.ticket" />
-          <AssociationSet Name="FK__ticket__id_empre__49C3F6B7" Association="ticketModel.FK__ticket__id_empre__49C3F6B7">
-            <End Role="empresa" EntitySet="empresa" />
-            <End Role="ticket" EntitySet="ticket" />
-          </AssociationSet>
-          <EntitySet Name="estado_ticket" EntityType="ticketModel.estado_ticket" />
-          <AssociationSet Name="FK__ticket__id_estad__4CA06362" Association="ticketModel.FK__ticket__id_estad__4CA06362">
-            <End Role="estado_ticket" EntitySet="estado_ticket" />
-            <End Role="ticket" EntitySet="ticket" />
-          </AssociationSet>
-          <EntitySet Name="modulo" EntityType="ticketModel.modulo" />
-          <EntitySet Name="operacion" EntityType="ticketModel.operacion" />
-          <EntitySet Name="rol" EntityType="ticketModel.rol" />
-          <EntitySet Name="rol_operacion" EntityType="ticketModel.rol_operacion" />
-          <EntitySet Name="usuario" EntityType="ticketModel.usuario" />
-          <AssociationSet Name="FK__operacion__id_Mo__5535A963" Association="ticketModel.FK__operacion__id_Mo__5535A963">
-            <End Role="modulo" EntitySet="modulo" />
-            <End Role="operacion" EntitySet="operacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__rol_opera__id_Op__59063A47" Association="ticketModel.FK__rol_opera__id_Op__59063A47">
-            <End Role="operacion" EntitySet="operacion" />
-            <End Role="rol_operacion" EntitySet="rol_operacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__rol_opera__id_Ro__5812160E" Association="ticketModel.FK__rol_opera__id_Ro__5812160E">
-            <End Role="rol" EntitySet="rol" />
-            <End Role="rol_operacion" EntitySet="rol_operacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__usuario__id_Rol__5BE2A6F2" Association="ticketModel.FK__usuario__id_Rol__5BE2A6F2">
-            <End Role="rol" EntitySet="rol" />
-            <End Role="usuario" EntitySet="usuario" />
-          </AssociationSet>
-          </EntityContainer>
+      <Schema Namespace="sisticketsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="empresa">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ticket" Relationship="ticketModel.FK__ticket__id_empre__49C3F6B7" FromRole="empresa" ToRole="ticket" />
+          <NavigationProperty Name="ticket" Relationship="Self.FK__ticket__id_empre__4AB81AF0" FromRole="empresa" ToRole="ticket" />
         </EntityType>
-        <EntityType Name="ticket">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fecha" Type="DateTime" Precision="3" />
-          <Property Name="serie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="email_cliente" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="asunto" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <Property Name="mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="solucion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="prioridad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="id_empresa" Type="Int32" />
-          <Property Name="nombre_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="id_estado_ticket" Type="Int32" />
-          <NavigationProperty Name="empresa" Relationship="ticketModel.FK__ticket__id_empre__49C3F6B7" FromRole="ticket" ToRole="empresa" />
-          <NavigationProperty Name="estado_ticket" Relationship="ticketModel.FK__ticket__id_estad__4CA06362" FromRole="ticket" ToRole="estado_ticket" />
-          </EntityType>
-        <Association Name="FK__ticket__id_empre__49C3F6B7">
-          <End Type="ticketModel.empresa" Role="empresa" Multiplicity="0..1" />
-          <End Type="ticketModel.ticket" Role="ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="empresa">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ticket">
-              <PropertyRef Name="id_empresa" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="estado_ticket">
           <Key>
             <PropertyRef Name="id_estado_ticket" />
           </Key>
           <Property Name="id_estado_ticket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ticket" Relationship="ticketModel.FK__ticket__id_estad__4CA06362" FromRole="estado_ticket" ToRole="ticket" />
+          <NavigationProperty Name="ticket" Relationship="Self.FK__ticket__id_estad__4BAC3F29" FromRole="estado_ticket" ToRole="ticket" />
         </EntityType>
-        <Association Name="FK__ticket__id_estad__4CA06362">
-          <End Type="ticketModel.estado_ticket" Role="estado_ticket" Multiplicity="0..1" />
-          <End Type="ticketModel.ticket" Role="ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="estado_ticket">
-              <PropertyRef Name="id_estado_ticket" />
-            </Principal>
-            <Dependent Role="ticket">
-              <PropertyRef Name="id_estado_ticket" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="modulo">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="operacion" Relationship="ticketModel.FK__operacion__id_Mo__5535A963" FromRole="modulo" ToRole="operacion" />
+          <NavigationProperty Name="operacion" Relationship="Self.FK__operacion__id_Mo__3C69FB99" FromRole="modulo" ToRole="operacion" />
         </EntityType>
         <EntityType Name="operacion">
           <Key>
@@ -295,8 +219,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="id_Modulo" Type="Int32" />
-          <NavigationProperty Name="modulo" Relationship="ticketModel.FK__operacion__id_Mo__5535A963" FromRole="operacion" ToRole="modulo" />
-          <NavigationProperty Name="rol_operacion" Relationship="ticketModel.FK__rol_opera__id_Op__59063A47" FromRole="operacion" ToRole="rol_operacion" />
+          <NavigationProperty Name="modulo" Relationship="Self.FK__operacion__id_Mo__3C69FB99" FromRole="operacion" ToRole="modulo" />
+          <NavigationProperty Name="rol_operacion" Relationship="Self.FK__rol_opera__id_Op__403A8C7D" FromRole="operacion" ToRole="rol_operacion" />
         </EntityType>
         <EntityType Name="rol">
           <Key>
@@ -304,8 +228,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="rol_operacion" Relationship="ticketModel.FK__rol_opera__id_Ro__5812160E" FromRole="rol" ToRole="rol_operacion" />
-          <NavigationProperty Name="usuario" Relationship="ticketModel.FK__usuario__id_Rol__5BE2A6F2" FromRole="rol" ToRole="usuario" />
+          <NavigationProperty Name="rol_operacion" Relationship="Self.FK__rol_opera__id_Ro__3F466844" FromRole="rol" ToRole="rol_operacion" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK__usuario__id_rol__4E88ABD4" FromRole="rol" ToRole="usuario" />
         </EntityType>
         <EntityType Name="rol_operacion">
           <Key>
@@ -314,8 +238,27 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_Rol" Type="Int32" />
           <Property Name="id_Operacion" Type="Int32" />
-          <NavigationProperty Name="operacion" Relationship="ticketModel.FK__rol_opera__id_Op__59063A47" FromRole="rol_operacion" ToRole="operacion" />
-          <NavigationProperty Name="rol" Relationship="ticketModel.FK__rol_opera__id_Ro__5812160E" FromRole="rol_operacion" ToRole="rol" />
+          <NavigationProperty Name="operacion" Relationship="Self.FK__rol_opera__id_Op__403A8C7D" FromRole="rol_operacion" ToRole="operacion" />
+          <NavigationProperty Name="rol" Relationship="Self.FK__rol_opera__id_Ro__3F466844" FromRole="rol_operacion" ToRole="rol" />
+        </EntityType>
+        <EntityType Name="ticket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="serie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email_cliente" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="asunto" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="solucion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="prioridad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="id_empresa" Type="Int32" />
+          <Property Name="id_estado_ticket" Type="Int32" />
+          <NavigationProperty Name="empresa" Relationship="Self.FK__ticket__id_empre__4AB81AF0" FromRole="ticket" ToRole="empresa" />
+          <NavigationProperty Name="estado_ticket" Relationship="Self.FK__ticket__id_estad__4BAC3F29" FromRole="ticket" ToRole="estado_ticket" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
@@ -325,13 +268,37 @@
           <Property Name="nombre_completo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="nombre_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="email_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="clave" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="id_Rol" Type="Int32" />
-          <NavigationProperty Name="rol" Relationship="ticketModel.FK__usuario__id_Rol__5BE2A6F2" FromRole="usuario" ToRole="rol" />
+          <Property Name="clave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id_rol" Type="Int32" />
+          <NavigationProperty Name="rol" Relationship="Self.FK__usuario__id_rol__4E88ABD4" FromRole="usuario" ToRole="rol" />
         </EntityType>
-        <Association Name="FK__operacion__id_Mo__5535A963">
-          <End Type="ticketModel.modulo" Role="modulo" Multiplicity="0..1" />
-          <End Type="ticketModel.operacion" Role="operacion" Multiplicity="*" />
+        <Association Name="FK__ticket__id_empre__4AB81AF0">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
+          <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ticket">
+              <PropertyRef Name="id_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ticket__id_estad__4BAC3F29">
+          <End Role="estado_ticket" Type="Self.estado_ticket" Multiplicity="0..1" />
+          <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estado_ticket">
+              <PropertyRef Name="id_estado_ticket" />
+            </Principal>
+            <Dependent Role="ticket">
+              <PropertyRef Name="id_estado_ticket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__operacion__id_Mo__3C69FB99">
+          <End Role="modulo" Type="Self.modulo" Multiplicity="0..1" />
+          <End Role="operacion" Type="Self.operacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="modulo">
               <PropertyRef Name="id" />
@@ -341,9 +308,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__rol_opera__id_Op__59063A47">
-          <End Type="ticketModel.operacion" Role="operacion" Multiplicity="0..1" />
-          <End Type="ticketModel.rol_operacion" Role="rol_operacion" Multiplicity="*" />
+        <Association Name="FK__rol_opera__id_Op__403A8C7D">
+          <End Role="operacion" Type="Self.operacion" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="operacion">
               <PropertyRef Name="id" />
@@ -353,9 +320,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__rol_opera__id_Ro__5812160E">
-          <End Type="ticketModel.rol" Role="rol" Multiplicity="0..1" />
-          <End Type="ticketModel.rol_operacion" Role="rol_operacion" Multiplicity="*" />
+        <Association Name="FK__rol_opera__id_Ro__3F466844">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="rol_operacion" Type="Self.rol_operacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="rol">
               <PropertyRef Name="id" />
@@ -365,101 +332,135 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__usuario__id_Rol__5BE2A6F2">
-          <End Type="ticketModel.rol" Role="rol" Multiplicity="0..1" />
-          <End Type="ticketModel.usuario" Role="usuario" Multiplicity="*" />
+        <Association Name="FK__usuario__id_rol__4E88ABD4">
+          <End Role="rol" Type="Self.rol" Multiplicity="0..1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="rol">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="usuario">
-              <PropertyRef Name="id_Rol" />
+              <PropertyRef Name="id_rol" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="sisticketsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="empresa" EntityType="Self.empresa" />
+          <EntitySet Name="estado_ticket" EntityType="Self.estado_ticket" />
+          <EntitySet Name="modulo" EntityType="Self.modulo" />
+          <EntitySet Name="operacion" EntityType="Self.operacion" />
+          <EntitySet Name="rol" EntityType="Self.rol" />
+          <EntitySet Name="rol_operacion" EntityType="Self.rol_operacion" />
+          <EntitySet Name="ticket" EntityType="Self.ticket" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="FK__ticket__id_empre__4AB81AF0" Association="Self.FK__ticket__id_empre__4AB81AF0">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="ticket" EntitySet="ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ticket__id_estad__4BAC3F29" Association="Self.FK__ticket__id_estad__4BAC3F29">
+            <End Role="estado_ticket" EntitySet="estado_ticket" />
+            <End Role="ticket" EntitySet="ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__operacion__id_Mo__3C69FB99" Association="Self.FK__operacion__id_Mo__3C69FB99">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="operacion" EntitySet="operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rol_opera__id_Op__403A8C7D" Association="Self.FK__rol_opera__id_Op__403A8C7D">
+            <End Role="operacion" EntitySet="operacion" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__rol_opera__id_Ro__3F466844" Association="Self.FK__rol_opera__id_Ro__3F466844">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="rol_operacion" EntitySet="rol_operacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__usuario__id_rol__4E88ABD4" Association="Self.FK__usuario__id_rol__4E88ABD4">
+            <End Role="rol" EntitySet="rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ticketModelStoreContainer" CdmEntityContainer="ticketEntities">
+        <EntityContainerMapping StorageEntityContainer="sisticketsModelStoreContainer" CdmEntityContainer="sisticketsEntities">
           <EntitySetMapping Name="empresa">
-            <EntityTypeMapping TypeName="ticketModel.empresa">
+            <EntityTypeMapping TypeName="sisticketsModel.empresa">
               <MappingFragment StoreEntitySet="empresa">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ticket">
-            <EntityTypeMapping TypeName="ticketModel.ticket">
-              <MappingFragment StoreEntitySet="ticket">
-                <ScalarProperty Name="id_estado_ticket" ColumnName="id_estado_ticket" />
-                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
-                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
-                <ScalarProperty Name="departamento" ColumnName="departamento" />
-                <ScalarProperty Name="prioridad" ColumnName="prioridad" />
-                <ScalarProperty Name="solucion" ColumnName="solucion" />
-                <ScalarProperty Name="mensaje" ColumnName="mensaje" />
-                <ScalarProperty Name="asunto" ColumnName="asunto" />
-                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
-                <ScalarProperty Name="serie" ColumnName="serie" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="estado_ticket">
-            <EntityTypeMapping TypeName="ticketModel.estado_ticket">
+            <EntityTypeMapping TypeName="sisticketsModel.estado_ticket">
               <MappingFragment StoreEntitySet="estado_ticket">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id_estado_ticket" ColumnName="id_estado_ticket" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="modulo">
-            <EntityTypeMapping TypeName="ticketModel.modulo">
+            <EntityTypeMapping TypeName="sisticketsModel.modulo">
               <MappingFragment StoreEntitySet="modulo">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="operacion">
-            <EntityTypeMapping TypeName="ticketModel.operacion">
+            <EntityTypeMapping TypeName="sisticketsModel.operacion">
               <MappingFragment StoreEntitySet="operacion">
-                <ScalarProperty Name="id_Modulo" ColumnName="id_Modulo" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_Modulo" ColumnName="id_Modulo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="rol">
-            <EntityTypeMapping TypeName="ticketModel.rol">
+            <EntityTypeMapping TypeName="sisticketsModel.rol">
               <MappingFragment StoreEntitySet="rol">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="rol_operacion">
-            <EntityTypeMapping TypeName="ticketModel.rol_operacion">
+            <EntityTypeMapping TypeName="sisticketsModel.rol_operacion">
               <MappingFragment StoreEntitySet="rol_operacion">
-                <ScalarProperty Name="id_Operacion" ColumnName="id_Operacion" />
-                <ScalarProperty Name="id_Rol" ColumnName="id_Rol" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_Rol" ColumnName="id_Rol" />
+                <ScalarProperty Name="id_Operacion" ColumnName="id_Operacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ticket">
+            <EntityTypeMapping TypeName="sisticketsModel.ticket">
+              <MappingFragment StoreEntitySet="ticket">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="serie" ColumnName="serie" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="asunto" ColumnName="asunto" />
+                <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+                <ScalarProperty Name="solucion" ColumnName="solucion" />
+                <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+                <ScalarProperty Name="id_empresa" ColumnName="id_empresa" />
+                <ScalarProperty Name="id_estado_ticket" ColumnName="id_estado_ticket" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="usuario">
-            <EntityTypeMapping TypeName="ticketModel.usuario">
+            <EntityTypeMapping TypeName="sisticketsModel.usuario">
               <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="id_Rol" ColumnName="id_Rol" />
-                <ScalarProperty Name="clave" ColumnName="clave" />
-                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
-                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
-                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="email_cliente" ColumnName="email_cliente" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

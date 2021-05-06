@@ -11,7 +11,7 @@ namespace sistickets.Filters
     public class AuthorizeUser : AuthorizeAttribute
     {
         private usuario oUsuario;
-        private ticketEntities bd = new ticketEntities();
+        private sisticketsEntities bd = new sisticketsEntities();
         private int idOperacion;
 
         public AuthorizeUser(int idOperacion = 0)
@@ -26,7 +26,7 @@ namespace sistickets.Filters
             {
                 oUsuario = (usuario)HttpContext.Current.Session["User"];
                 var lstMisOperaciones = from m in bd.rol_operacion
-                                        where m.id_Rol == oUsuario.id_Rol
+                                        where m.id_Rol == oUsuario.id_rol
                                             && m.id_Operacion == idOperacion
                                         select m;
 

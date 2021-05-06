@@ -17,14 +17,14 @@ namespace sistickets.Models
         public int id { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
         public string serie { get; set; }
+        public string nombre_usuario { get; set; }
         public string email_cliente { get; set; }
+        public string departamento { get; set; }
         public string asunto { get; set; }
         public string mensaje { get; set; }
         public string solucion { get; set; }
         public string prioridad { get; set; }
-        public string departamento { get; set; }
         public Nullable<int> id_empresa { get; set; }
-        public string nombre_usuario { get; set; }
         public Nullable<int> id_estado_ticket { get; set; }
     
         public virtual empresa empresa { get; set; }

@@ -11,11 +11,11 @@ namespace sistickets.Controllers
 {
     public class AccesoController : Controller
     {
-        ticketEntities bd;
+        sisticketsEntities bd;
 
         public AccesoController()
         {
-            bd = new ticketEntities();
+            bd = new sisticketsEntities();
         }
         // GET: Acceso
         public ActionResult Login()
@@ -46,9 +46,9 @@ namespace sistickets.Controllers
                     }
 
                     Session["User"] = oUser;
-                    Session["id_rol"] = oUser.id_Rol;
+                    Session["id_rol"] = oUser.id_rol;
 
-                if (oUser.id_Rol == 1)
+                if (oUser.id_rol == 1)
                 {
                     return RedirectToAction("Soporte", "Ticket");
                 }
@@ -95,7 +95,7 @@ namespace sistickets.Controllers
                     string cadenaContraCifrada = BitConverter.ToString(byteContraCifrado).Replace("-", "");
                     oUsuario.clave = cadenaContraCifrada;
                     oUsuario.email_cliente = oUsuarioCLS.correo;
-                    oUsuario.id_Rol = 1;
+                    oUsuario.id_rol = 1;
                     bd.usuario.Add(oUsuario);
                     bd.SaveChanges();
                     ViewBag.Alert = "Ha sido agregado con exito, inicie sesion";
