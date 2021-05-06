@@ -25,9 +25,13 @@ namespace sistickets.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<administrador> administrador { get; set; }
-        public virtual DbSet<cliente> cliente { get; set; }
-        public virtual DbSet<ticket> ticket { get; set; }
         public virtual DbSet<empresa> empresa { get; set; }
+        public virtual DbSet<ticket> ticket { get; set; }
+        public virtual DbSet<estado_ticket> estado_ticket { get; set; }
+        public virtual DbSet<modulo> modulo { get; set; }
+        public virtual DbSet<operacion> operacion { get; set; }
+        public virtual DbSet<rol> rol { get; set; }
+        public virtual DbSet<rol_operacion> rol_operacion { get; set; }
+        public virtual DbSet<usuario> usuario { get; set; }
     }
 }

@@ -12,12 +12,18 @@ namespace sistickets.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class cliente
+    public partial class estado_ticket
     {
-        public int id_cliente { get; set; }
-        public string nombre_completo { get; set; }
-        public string nombre_usuario { get; set; }
-        public string email_cliente { get; set; }
-        public string clave { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public estado_ticket()
+        {
+            this.ticket = new HashSet<ticket>();
+        }
+    
+        public int id_estado_ticket { get; set; }
+        public string nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ticket> ticket { get; set; }
     }
 }

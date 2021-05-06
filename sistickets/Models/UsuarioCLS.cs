@@ -6,7 +6,7 @@ using System.Web;
 
 namespace sistickets.Models
 {
-    public class ClienteCLS
+    public class UsuarioCLS
     {
         [Display(Name="Id Cliente")]
         public int id { get; set; }

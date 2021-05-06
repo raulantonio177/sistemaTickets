@@ -12,12 +12,13 @@ namespace sistickets.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class administrador
+    public partial class rol_operacion
     {
-        public int id_admin { get; set; }
-        public string nombre_completo { get; set; }
-        public string nombre_admin { get; set; }
-        public string clave { get; set; }
-        public string email_admin { get; set; }
+        public int id { get; set; }
+        public Nullable<int> id_Rol { get; set; }
+        public Nullable<int> id_Operacion { get; set; }
+    
+        public virtual operacion operacion { get; set; }
+        public virtual rol rol { get; set; }
     }
 }

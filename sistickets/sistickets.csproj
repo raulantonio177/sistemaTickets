@@ -173,19 +173,33 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\AccesoController.cs" />
+    <Compile Include="Controllers\CerrarController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
+    <Compile Include="Controllers\UsuarioAdminController.cs" />
+    <Compile Include="Filters\AuthorizeUser.cs" />
+    <Compile Include="Filters\VerificaSesion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\administrador.cs">
-      <DependentUpon>ticket.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\cliente.cs">
-      <DependentUpon>ticket.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ClienteCLS.cs" />
+    <Compile Include="Models\UsuarioCLS.cs" />
     <Compile Include="Models\empresa.cs">
+      <DependentUpon>ticket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\estado_ticket.cs">
+      <DependentUpon>ticket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\modulo.cs">
+      <DependentUpon>ticket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\operacion.cs">
+      <DependentUpon>ticket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rol.cs">
+      <DependentUpon>ticket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rol_operacion.cs">
       <DependentUpon>ticket.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ticket.Context.cs">
@@ -207,6 +221,9 @@
       <DependentUpon>ticket.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TicketCLS.cs" />
+    <Compile Include="Models\usuario.cs">
+      <DependentUpon>ticket.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,14 +231,18 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\bg.jpg" />
     <Content Include="img\new_ticket.png" />
     <Content Include="img\old_ticket.png" />
+    <Content Include="img\ticket2.png" />
+    <Content Include="img\soporte.png" />
+    <Content Include="img\status.png" />
     <Content Include="img\ticket.png" />
-    <Content Include="img\tux_repair.png" />
     <Content Include="Models\ticket.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ticket.edmx</DependentUpon>
@@ -247,6 +268,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -266,12 +289,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Cliente\Guardar.cshtml" />
+    <Content Include="Views\Acceso\Guardar.cshtml" />
     <Content Include="Views\Ticket\Guardar.cshtml" />
     <Content Include="Views\Ticket\Soporte.cshtml" />
+    <Content Include="Views\Ticket\Index.cshtml" />
+    <Content Include="Views\Ticket\_TablaTicket.cshtml" />
+    <Content Include="Views\Ticket\Editar.cshtml" />
+    <Content Include="Views\Acceso\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Error\UnauthorizedOperation.cshtml" />
+    <Content Include="Views\Shared\_LayoutRegistrar.cshtml" />
+    <Content Include="Views\UsuarioAdmin\Guardar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cerrar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<h2>Login</h2>
+
+<div class="row">
+    <div class="danger">
+        @ViewBag.Error
+    </div>
+        <div class="formContent blur">
+
+            <form action="@Url.Content("~/Acceso/Login")" method="post">
+                <div class="form-group">
+                    <span class="fa fa-user"></span><label>Usuario</label>
+                    <input type="text" name="user" placeholder="Nombre de usuario" />
+                </div>
+                <div class="form-group">
+                    <span class="fa fa-key"></span><label>Contraseña</label>
+                    <input type="password" name="pass" placeholder="Contraseña" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Entrar" class="btn btn-success" />
+                </div>
+                <div class="signup"> ¿No tienes una cuenta? <a href="@Url.Content("~/Acceso/Guardar")">Registrate ahora</a> </div>
+
+            </form>
+        </div>
+</div>
+

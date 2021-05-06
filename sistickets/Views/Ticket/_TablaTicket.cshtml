@@ -1,0 +1,43 @@
+﻿@using sistickets.Models
+@model List<TicketCLS>
+
+<table class="table table-bordered table-hover">
+
+    <thead>
+        <tr>
+            <td>@Html.LabelFor(p => Model[0].id)</td>
+            <td>@Html.LabelFor(p => Model[0].fecha)</td>
+            <td>@Html.LabelFor(p => Model[0].serie)</td>
+            <td>@Html.LabelFor(p => Model[0].estado_ticket)</td>
+            <td>@Html.LabelFor(p => Model[0].nombre_usuario)</td>
+            <td>@Html.LabelFor(p => Model[0].email_cliente)</td>
+            <td>@Html.LabelFor(p => Model[0].asunto)</td>
+            <td>@Html.LabelFor(p => Model[0].mensaje)</td>
+            <td>@Html.LabelFor(p => Model[0].solucion)</td>
+            <td>@Html.LabelFor(p => Model[0].prioridad)</td>
+            <td>@Html.LabelFor(p => Model[0].departamento)</td>
+            <td>@Html.LabelFor(p => Model[0].nombreEmpresa)</td>
+            <td>Editar</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+        <tr>
+            <td>@ticket.id</td>
+            <td>@ticket.fecha</td>
+            <td>@ticket.serie</td>
+            <td>@ticket.estado_ticket</td>
+            <td>@ticket.nombre_usuario</td>
+            <td>@ticket.email_cliente</td>
+            <td>@ticket.asunto</td>
+            <td>@ticket.mensaje</td>
+            <td>@ticket.solucion</td>
+            <td>@ticket.prioridad</td>
+            <td>@ticket.departamento</td>
+            <td>@ticket.nombreEmpresa</td>
+            <td> @Html.ActionLink(" ", "Editar", "Ticket", new { id = ticket.id }, new { @class = "glyphicon glyphicon-edit btn btn-primary" })</td>
+        </tr>
+            }
+    </tbody>
+</table>

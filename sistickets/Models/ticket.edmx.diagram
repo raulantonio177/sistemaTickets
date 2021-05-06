@@ -4,13 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fcf149db068d4d2a89e7f4d2697a00fa" Name="Diagram1">
-        <EntityTypeShape EntityType="ticketModel.administrador" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ticketModel.cliente" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ticketModel.ticket" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+      <Diagram DiagramId="fcf149db068d4d2a89e7f4d2697a00fa" Name="Diagram1" ZoomLevel="100">
         <EntityTypeShape EntityType="ticketModel.empresa" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ticketModel.ticket" Width="1.5" PointX="3" PointY="9.25" />
         <AssociationConnector Association="ticketModel.FK__ticket__id_empre__49C3F6B7" />
-      </Diagram>
+        <EntityTypeShape EntityType="ticketModel.estado_ticket" Width="1.5" PointX="0.75" PointY="11.25" />
+        <AssociationConnector Association="ticketModel.FK__ticket__id_estad__4CA06362" />
+        <EntityTypeShape EntityType="ticketModel.modulo" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="ticketModel.operacion" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="ticketModel.rol" Width="1.5" PointX="3" PointY="14.125" />
+        <EntityTypeShape EntityType="ticketModel.rol_operacion" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="ticketModel.usuario" Width="1.5" PointX="7.25" PointY="5.5" />
+        <AssociationConnector Association="ticketModel.FK__operacion__id_Mo__5535A963" />
+        <AssociationConnector Association="ticketModel.FK__rol_opera__id_Op__59063A47" />
+        <AssociationConnector Association="ticketModel.FK__rol_opera__id_Ro__5812160E" />
+        <AssociationConnector Association="ticketModel.FK__usuario__id_Rol__5BE2A6F2" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
